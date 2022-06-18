@@ -1,5 +1,7 @@
 body {
-    background-color: rgb(24, 33, 33);
+    background-image: url("Circuit-Space.webp");
+    background-size: cover;
+
     font-family: 'Orbitron', sans-serif;
 }
 
@@ -10,8 +12,13 @@ p {
 
 h1 {
     position: relative;
-    bottom: 15px;
-    color: white
+    margin-left: 700px;
+    margin-right: 700px;
+    box-shadow: 8px 5px 10px rgb(255, 0, 0);
+    border-radius: 2px;
+
+    bottom: 10px;
+    color: white;
 }
 
 .content {
@@ -21,7 +28,8 @@ h1 {
 
     position: relative;
     bottom: 5px;
-    border-radius: 10px;
+    border-radius: 20px;
+    opacity: 97%;
 }
 
 .buttons {
@@ -33,14 +41,17 @@ h1 {
     height: 100px;
     width: 100px;
     border-radius: 10px;
+    margin: 1px;
 }
 
 #best-time {
     display: inline-flex;
-    bottom: 55px;
+    position: relative;
+    color: white;
+    top: 10px;
 }
 
-#current-time {
+.current-time {
     display: inline-flex;
     position: relative;
     top: 50px;
