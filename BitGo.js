@@ -49,30 +49,32 @@ let matrix = [
   [r4c1, r4c2, r4c3, r4c4],
 ];
 
-// class GameBoard {
-//   constructor(matrix) {
-//     this.matrix = matrix;
-//   };
+// Instantiate a new instance of the board each time the game is loaded
+class GameBoard {
+  constructor(matrix) {
+    this.matrix = matrix;
+  };
 
-//   createMatrix(matrix) {
-//     matrix = this.matrix;
+// Currently, this method randomly sorts the tiles in each row
+  createMatrix(matrix) {
+    matrix = this.matrix;
 
-//     for (let k = 0; k < matrix.length; k++) {
-//       let i = matrix[k].length;
-//       if (i == 0) return false;
-//       else {
-//         while (--i) {
-//           let j = Math.floor(Math.random() * (i + 1));
-//           let tempi = matrix[k][i];
-//           let tempj = matrix[k][j];
-//           matrix[k][i] = tempj;
-//           matrix[k][j] = tempi;
-//         };
-//       };
-//     };
-//     return matrix;
-//   };
-// };
+    for (let k = 0; k < matrix.length; k++) {
+      let i = matrix[k].length;
+      if (i == 0) return false;
+      else {
+        while (--i) {
+          let j = Math.floor(Math.random() * (i + 1));
+          let tempi = matrix[k][i];
+          let tempj = matrix[k][j];
+          matrix[k][i] = tempj;
+          matrix[k][j] = tempi;
+        };
+      };
+    };
+    return matrix;
+  };
+};
 
 // Single-click Event Handlers - Row 1
 const r1c1_singleClick = () => {
