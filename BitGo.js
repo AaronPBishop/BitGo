@@ -49,87 +49,156 @@ let matrix = [
   [r4c1, r4c2, r4c3, r4c4],
 ];
 
-// Instantiate a new instance of the board each time the game is loaded
-class GameBoard {
-  constructor(matrix) {
-    this.matrix = matrix;
-  };
-
-// Currently, this method randomly sorts the tiles in each row
-  createMatrix(matrix) {
-    matrix = this.matrix;
-
-    for (let k = 0; k < matrix.length; k++) {
-      let i = matrix[k].length;
-      if (i == 0) return false;
-      else {
-        while (--i) {
-          let j = Math.floor(Math.random() * (i + 1));
-          let tempi = matrix[k][i];
-          let tempj = matrix[k][j];
-          matrix[k][i] = tempj;
-          matrix[k][j] = tempi;
-        };
-      };
-    };
-    return matrix;
-  };
-};
-
 // Single-click Event Handlers - Row 1
 const r1c1_singleClick = () => {
-  r1c1.style.backgroundColor = "red";
+  if (r1c1.style.backgroundColor === "rgb(41, 38, 38)") {
+    r1c1.style.backgroundColor = "red";
+  } else if (r1c1.style.backgroundColor === "red") {
+    r1c1.style.backgroundColor = "blue";
+  } else {
+    r1c1.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r1c2_singleClick = () => {
-  r1c2.style.backgroundColor = "red";
+  if (r1c2.style.backgroundColor === "rgb(41, 38, 38)") {
+    r1c2.style.backgroundColor = "red";
+  } else if (r1c2.style.backgroundColor === "red") {
+    r1c2.style.backgroundColor = "blue";
+  } else {
+    r1c2.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r1c3_singleClick = () => {
-  r1c3.style.backgroundColor = "red";
+  if (r1c3.style.backgroundColor === "rgb(41, 38, 38)") {
+    r1c3.style.backgroundColor = "red";
+  } else if (r1c3.style.backgroundColor === "red") {
+    r1c3.style.backgroundColor = "blue";
+  } else {
+    r1c3.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r1c4_singleClick = () => {
-  r1c4.style.backgroundColor = "red";
+  if (r1c4.style.backgroundColor === "rgb(41, 38, 38)") {
+    r1c4.style.backgroundColor = "red";
+  } else if (r1c4.style.backgroundColor === "red") {
+    r1c4.style.backgroundColor = "blue";
+  } else {
+    r1c4.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 
 // Single-click Event Handlers - Row 2
 const r2c1_singleClick = () => {
-  r2c1.style.backgroundColor = "red";
+  if (r2c1.style.backgroundColor === "rgb(41, 38, 38)") {
+    r2c1.style.backgroundColor = "red";
+  } else if (r2c1.style.backgroundColor === "red") {
+    r2c1.style.backgroundColor = "blue";
+  } else {
+    r2c1.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r2c2_singleClick = () => {
-  r2c2.style.backgroundColor = "red";
+  if (r2c2.style.backgroundColor === "rgb(41, 38, 38)") {
+    r2c2.style.backgroundColor = "red";
+  } else if (r2c2.style.backgroundColor === "red") {
+    r2c2.style.backgroundColor = "blue";
+  } else {
+    r2c2.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r2c3_singleClick = () => {
-  r2c3.style.backgroundColor = "red";
+  if (r2c3.style.backgroundColor === "rgb(41, 38, 38)") {
+    r2c3.style.backgroundColor = "red";
+  } else if (r2c3.style.backgroundColor === "red") {
+    r2c3.style.backgroundColor = "blue";
+  } else {
+    r2c3.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r2c4_singleClick = () => {
-  r2c4.style.backgroundColor = "red";
+  if (r2c4.style.backgroundColor === "rgb(41, 38, 38)") {
+    r2c4.style.backgroundColor = "red";
+  } else if (r2c4.style.backgroundColor === "red") {
+    r2c4.style.backgroundColor = "blue";
+  } else {
+    r2c4.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 
 // Single-click Event Handlers - Row 3
 const r3c1_singleClick = () => {
-  r3c1.style.backgroundColor = "red";
+  if (r3c1.style.backgroundColor === "rgb(41, 38, 38)") {
+    r3c1.style.backgroundColor = "red";
+  } else if (r3c1.style.backgroundColor === "red") {
+    r3c1.style.backgroundColor = "blue";
+  } else {
+    r3c1.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r3c2_singleClick = () => {
-  r3c2.style.backgroundColor = "red";
+  if (r3c2.style.backgroundColor === "rgb(41, 38, 38)") {
+    r3c2.style.backgroundColor = "red";
+  } else if (r3c2.style.backgroundColor === "red") {
+    r3c2.style.backgroundColor = "blue";
+  } else {
+    r3c2.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r3c3_singleClick = () => {
-  r3c3.style.backgroundColor = "red";
+  if (r3c3.style.backgroundColor === "rgb(41, 38, 38)") {
+    r3c3.style.backgroundColor = "red";
+  } else if (r3c3.style.backgroundColor === "red") {
+    r3c3.style.backgroundColor = "blue";
+  } else {
+    r3c3.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r3c4_singleClick = () => {
-  r3c4.style.backgroundColor = "red";
+  if (r3c4.style.backgroundColor === "rgb(41, 38, 38)") {
+    r3c4.style.backgroundColor = "red";
+  } else if (r3c4.style.backgroundColor === "red") {
+    r3c4.style.backgroundColor = "blue";
+  } else {
+    r3c4.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 
 // Single-click Event Handlers - Row 4
 const r4c1_singleClick = () => {
-  r4c1.style.backgroundColor = "red";
+  if (r4c1.style.backgroundColor === "rgb(41, 38, 38)") {
+    r4c1.style.backgroundColor = "red";
+  } else if (r4c1.style.backgroundColor === "red") {
+    r4c1.style.backgroundColor = "blue";
+  } else {
+    r4c1.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r4c2_singleClick = () => {
-  r4c2.style.backgroundColor = "red";
+  if (r4c2.style.backgroundColor === "rgb(41, 38, 38)") {
+    r4c2.style.backgroundColor = "red";
+  } else if (r4c2.style.backgroundColor === "red") {
+    r4c2.style.backgroundColor = "blue";
+  } else {
+    r4c2.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r4c3_singleClick = () => {
-  r4c3.style.backgroundColor = "red";
+  if (r4c3.style.backgroundColor === "rgb(41, 38, 38)") {
+    r4c3.style.backgroundColor = "red";
+  } else if (r4c3.style.backgroundColor === "red") {
+    r4c3.style.backgroundColor = "blue";
+  } else {
+    r4c3.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 const r4c4_singleClick = () => {
-  r4c4.style.backgroundColor = "red";
+  if (r4c4.style.backgroundColor === "rgb(41, 38, 38)") {
+    r4c4.style.backgroundColor = "red";
+  } else if (r4c4.style.backgroundColor === "red") {
+    r4c4.style.backgroundColor = "blue";
+  } else {
+    r4c4.style.backgroundColor = "rgb(41, 38, 38)";
+  };
 };
 
 // Single-click Event Listeners - Row 1
@@ -152,80 +221,3 @@ r4c1.addEventListener("click", r4c1_singleClick);
 r4c2.addEventListener("click", r4c2_singleClick);
 r4c3.addEventListener("click", r4c3_singleClick);
 r4c4.addEventListener("click", r4c4_singleClick);
-
-// Double-click Event Handlers - Row 1
-const r1c1_doubleClick = () => {
-  r1c1.style.backgroundColor = "blue";
-};
-const r1c2_doubleClick = () => {
-  r1c2.style.backgroundColor = "blue";
-};
-const r1c3_doubleClick = () => {
-  r1c3.style.backgroundColor = "blue";
-};
-const r1c4_doubleClick = () => {
-  r1c4.style.backgroundColor = "blue";
-};
-
-// Double-click Event Handlers - Row 2
-const r2c1_doubleClick = () => {
-  r2c1.style.backgroundColor = "blue";
-};
-const r2c2_doubleClick = () => {
-  r2c2.style.backgroundColor = "blue";
-};
-const r2c3_doubleClick = () => {
-  r2c3.style.backgroundColor = "blue";
-};
-const r2c4_doubleClick = () => {
-  r2c4.style.backgroundColor = "blue";
-};
-
-// Double-click Event Handlers - Row 3
-const r3c1_doubleClick = () => {
-  r3c1.style.backgroundColor = "blue";
-};
-const r3c2_doubleClick = () => {
-  r3c2.style.backgroundColor = "blue";
-};
-const r3c3_doubleClick = () => {
-  r3c3.style.backgroundColor = "blue";
-};
-const r3c4_doubleClick = () => {
-  r3c4.style.backgroundColor = "blue";
-};
-
-// Double-click Event Handlers - Row 4
-const r4c1_doubleClick = () => {
-  r4c1.style.backgroundColor = "blue";
-};
-const r4c2_doubleClick = () => {
-  r4c2.style.backgroundColor = "blue";
-};
-const r4c3_doubleClick = () => {
-  r4c3.style.backgroundColor = "blue";
-};
-const r4c4_doubleClick = () => {
-  r4c4.style.backgroundColor = "blue";
-};
-
-// Double-click Event Listeners - Row 1
-r1c1.addEventListener("dblclick", r1c1_doubleClick);
-r1c2.addEventListener("dblclick", r1c2_doubleClick);
-r1c3.addEventListener("dblclick", r1c3_doubleClick);
-r1c4.addEventListener("dblclick", r1c4_doubleClick);
-// Double-click Event Listeners - Row 2
-r2c1.addEventListener("dblclick", r2c1_doubleClick);
-r2c2.addEventListener("dblclick", r2c2_doubleClick);
-r2c3.addEventListener("dblclick", r2c3_doubleClick);
-r2c4.addEventListener("dblclick", r2c4_doubleClick);
-// Double-click Event Listeners - Row 3
-r3c1.addEventListener("dblclick", r3c1_doubleClick);
-r3c2.addEventListener("dblclick", r3c2_doubleClick);
-r3c3.addEventListener("dblclick", r3c3_doubleClick);
-r3c4.addEventListener("dblclick", r3c4_doubleClick);
-// Double-click Event Listeners - Row 4
-r4c1.addEventListener("dblclick", r4c1_doubleClick);
-r4c2.addEventListener("dblclick", r4c2_doubleClick);
-r4c3.addEventListener("dblclick", r4c3_doubleClick);
-r4c4.addEventListener("dblclick", r4c4_doubleClick);
