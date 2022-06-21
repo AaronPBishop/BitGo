@@ -4,6 +4,7 @@ body {
     background-size: cover;
 
     font-family: 'Orbitron', sans-serif;
+    box-sizing: border-box;
 }
 
 
@@ -24,8 +25,10 @@ h1 {
 
 .content {
     background-color: rgb(0, 0, 0);
-    height: 600px;
-    width: 50%;
+    min-height: 600px;
+    max-height: 600px;
+    min-width: 50%;
+    max-width: 50%;
     box-shadow: 0px 10px 20px red;
 
     position: relative;
@@ -40,8 +43,10 @@ h1 {
 
     background-color: rgb(41, 38, 38);
 
-    height: 100px;
-    width: 100px;
+    min-height: 100px;
+    max-height: 100px;
+    min-width: 100px;
+    max-width: 100px;
     border-radius: 10px;
     margin: 1px;
 }
