@@ -1,0 +1,9 @@
+body {
+  background-image: url("./images/Bits.jpg");
+  background-color: rgb(41, 38, 38);
+  background-size: cover;
+
+  font-family: 'Orbitron', sans-serif;
+  box-sizing: border-box;
+  overflow: hidden;
+}
