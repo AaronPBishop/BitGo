@@ -5,7 +5,7 @@ import Row from '../Row/Row.js';
 import './styles.css';
 
 const Board = () => {
-    const boardSchema = useSelector(state => state.board);
+    const boardSchema = useSelector(state => state.game.board);
 
     return (
         <div id="game-box">

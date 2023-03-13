@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-import { setDifficulty } from '../../store/game.js';
+import { setDifficulty, buildValidBoard } from '../../store/game.js';
 
 import './styles.css';
 
@@ -19,9 +19,10 @@ const Home = () => {
                     marginTop: '16vh'
                 }}>
                     <div
-                    onClick={() => {
+                    onClick={async () => {
                         navigate('/game');
-                        dispatch(setDifficulty('4x4'));
+                        await dispatch(setDifficulty('4x4'));
+                        await dispatch(buildValidBoard());
                     }}
                     className='board-selections'
                     style={{backgroundColor: 'blue', marginRight: '2vw'}}>
