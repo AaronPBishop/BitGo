@@ -1,0 +1,15 @@
+.board-selections {
+    color: white;
+    font-size: 20px;
+    text-align: center;
+    line-height: 9vh;
+    font-family: 'Orbitron', sans-serif;
+
+    width: 5vw;
+    height: 10vh;
+
+    border-radius: 10px;
+    border: 2px solid white;
+
+    cursor: pointer;
+}

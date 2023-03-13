@@ -1,0 +1,73 @@
+import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
+import { setDifficulty } from '../../store/game.js';
+
+import './styles.css';
+
+const Home = () => {
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    return (
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+            <div id="content">
+                <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: '16vh'
+                }}>
+                    <div
+                    onClick={() => {
+                        navigate('/game');
+                        dispatch(setDifficulty('4x4'));
+                    }}
+                    className='board-selections'
+                    style={{backgroundColor: 'blue', marginRight: '2vw'}}>
+                        4x4
+                    </div>
+
+                    <div
+                    onClick={() => {
+                        navigate('/game');
+                        dispatch(setDifficulty('6x6'));
+                    }}
+                    className='board-selections'
+                    style={{backgroundColor: 'red', marginLeft: '2vw'}}>
+                        6x6
+                    </div>
+                </div>
+
+                <div
+                style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    marginTop: '10vh'
+                }}>
+                    <div
+                    onClick={() => {
+                        navigate('/game');
+                        dispatch(setDifficulty('8x8'));
+                    }}
+                    className='board-selections'
+                    style={{backgroundColor: 'red', marginRight: '2vw'}}>
+                        8x8
+                    </div>
+
+                    <div
+                    onClick={() => {
+                        navigate('/game');
+                        dispatch(setDifficulty('10x10'));
+                    }}
+                    className='board-selections'
+                    style={{backgroundColor: 'blue', marginLeft: '2vw'}}>
+                        10x10
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default Home;

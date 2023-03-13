@@ -1,11 +1,17 @@
+import { Route, Routes } from 'react-router-dom';
+
+import Home from './components/Home/Home.js';
+import BoardHolder from './components/BoardHolder/BoardHolder.js';
 
 import './index.css';
 
 const App = () => {
   return (
-    <div>
+    <Routes>
+      <Route exact path='/' element={<Home />} />
 
-    </div>
+      <Route exact path='/game' element={<BoardHolder />} />
+    </Routes>
   );
 }
 
