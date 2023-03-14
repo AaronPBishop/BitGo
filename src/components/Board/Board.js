@@ -15,28 +15,27 @@ const Board = () => {
         <div 
         id="game-box"
         style={{
-            height: 
-            (gameSchema.difficulty === '4x4' && gameSchema.completionMsg.length
-            || gameSchema.difficulty === '4x4' && gameSchema.hasWon === true) ? '89vh' 
-            : (gameSchema.difficulty === '4x4' && !gameSchema.completionMsg.length) && '83vh'
+            marginTop: gameSchema.difficulty !== '4x4' && '-0.5vh'
         }}>
             {
                 gameSchema.board.map((tiles, i) => <Row tiles={tiles} rowCoord={i} />)
             }
 
-            <div style={{color: 'white', textAlign: 'center', marginTop: '6vh'}}>
+            <div style={{color: 'white', textAlign: 'center', marginTop: '6vh', marginBottom: '2vh'}}>
                 { gameSchema.completionMsg }
             </div>
 
             <div style={{display: gameSchema.hasWon ? 'flex' : 'none', justifyContent: 'center'}}>
                 <div 
                 onClick={async () => {
+                    const difficulty = gameSchema.difficulty;
+
                     await dispatch(resetBoard());
-                    await dispatch(setDifficulty('4x4'));
+                    await dispatch(setDifficulty(difficulty));
                     await dispatch(buildValidBoard());
                 }}
                 style={{
-                    marginTop: '-1vh',
+                    marginBottom: '2vh',
                     color: 'white', 
                     textAlign: 'center', 
                     lineHeight: '5vh',

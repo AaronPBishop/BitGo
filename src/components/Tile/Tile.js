@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { Lock } from '@styled-icons/fa-solid/Lock';
 
 import { setTileVal, setHasWon, setCompletionMsg } from '../../store/game.js';
 
-import checkWin from '../../functions/4x4/checkSolved4x4.js';
+import checkWin4x4 from '../../functions/4x4/checkSolved4x4.js';
+import checkWin6x6 from '../../functions/6x6/checkSolved6x6.js';
 
 import './styles.css';
 
@@ -14,8 +15,32 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
 
     const gameSchema = useSelector(state => state.game);
 
+    const [clicked, setClicked] = useState(false);
     const [clickedPreset, setClickedPreset] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
+
+    const tileSizeMap = {
+        '4x4': {
+            width: '8vw',
+            height: '16vh'
+        },
+        '6x6': {
+            width: '5.5vw',
+            height: '11vh'
+        }
+    };
+
+    const checkWinMap = {
+        '4x4': checkWin4x4,
+        '6x6': checkWin6x6
+    };
+
+    useEffect(() => {
+        const winStatus = checkWinMap[gameSchema.difficulty](gameSchema.board);
+
+        if (winStatus.solved) dispatch(setHasWon());
+        if (!winStatus.solved) dispatch(setCompletionMsg(winStatus.msg));
+    }, [clicked]);
 
     return (
         <div
@@ -36,12 +61,8 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
                 };
             };
 
+            setClicked(clicked => !clicked);
             dispatch(setTileVal(rowCoord, colCoord));
-
-            const winStatus = checkWin(gameSchema.board);
-            
-            if (winStatus.solved) dispatch(setHasWon());
-            if (!winStatus.solved) dispatch(setCompletionMsg(winStatus.msg));
         }}
         className='tiles'
         id={currValue === null ? 'null-tile' : currValue === 0 ? 'red-tile' : currValue === 1 && 'blue-tile'}
@@ -49,8 +70,8 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
         onMouseLeave={() => setIsHovering(false)}
         style={{
             backgroundColor: currValue === 0 ? 'red' : currValue === 1 ? 'blue' : 'rgb(40, 40, 40)',
-            width: '8vw',
-            height: '16vh',
+            width: tileSizeMap[gameSchema.difficulty].width,
+            height: tileSizeMap[gameSchema.difficulty].height,
             borderBottom: currValue === 0 ? '0.8vh solid rgb(190, 0, 0)' : currValue === 1 ? '0.8vh solid rgb(0, 0, 170)' : '0.8vh solid rgb(30, 30, 30)',
             boxShadow: isHovering && currValue === null || isHovering && currValue === 0 ? '0px 0px 10px 2px red' : isHovering && currValue === 1 && '0px 0px 10px 2px blue',
             opacity: gameSchema.hasWon === true ? '0.6' : '1'

@@ -1,5 +1,7 @@
 import buildValid4x4 from '../functions/4x4/buildValid4x4.js';
 import reduce4x4 from '../functions/4x4/reduce4x4.js';
+import buildValid6x6 from '../functions/6x6/buildValid6x6.js';
+import reduce6x6 from '../functions/6x6/reduce6x6.js';
 
 
 const initialState = {
@@ -61,8 +63,22 @@ const gameReducer = (state = initialState, action) => {
 
         case 'BUILD_VALID_BOARD': {
             if (currentState.difficulty === '4x4') {
-                const validBoard = buildValid4x4();
-                const reducedBoard = reduce4x4(validBoard);
+                const reducedBoard = reduce4x4(buildValid4x4());
+
+                currentState.board = reducedBoard;
+
+                for (let i = 0; i < reducedBoard.length; i++) {
+                    for (let j = 0; j < reducedBoard[i].length; j++) {
+                        if (reducedBoard[i][j] !== null) currentState.presetCoords.push([i, j])
+                    };
+                };
+
+
+                return currentState;
+            };
+
+            if (currentState.difficulty === '6x6') {
+                const reducedBoard = reduce6x6(buildValid6x6());
 
                 currentState.board = reducedBoard;
 

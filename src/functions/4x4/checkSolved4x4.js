@@ -1,4 +1,4 @@
-export const isBoardFull = (board) => {
+const isBoardFull = (board) => {
     for (let row = 0; row < board.length; row++) {
         for (let col = 0; col < board[row].length; col++) {
             let currTile = board[row][col];
@@ -93,7 +93,7 @@ const endGameColTotals = (board) => {
     return false;
 };
 
-const checkWin = (board) => {
+const checkWin4x4 = (board) => {
     if (isBoardFull(board)) {
         if (endGameRowsUnique(board)) {
             if (endGameColsUnique(board)) {
@@ -121,7 +121,7 @@ const setWin = (board) => {
     let wins = 0;
     if (localStorage.getItem('hasWon')) wins = localStorage.getItem('hasWon');
 
-    if (checkWin(board)) {
+    if (checkWin4x4(board)) {
         wins++;
         localStorage.setItem('hasWon', wins);
 
@@ -142,7 +142,7 @@ const setWin = (board) => {
 };
 
 const setBest = (board, currMin, currSec, bestMin, bestSec) => {
-    if (checkWin(board)) {
+    if (checkWin4x4(board)) {
         if (localStorage.getItem('hasWon') > 1) {
             if (Number(currMin.innerText) >= Number(bestMin.innerText) && Number(currSec.innerText) >= Number(bestSec.innerText)) return;
             if (Number(currMin.innerText) > Number(bestMin.innerText) && Number(currSec.innerText) <= Number(bestSec.innerText)) return;
@@ -153,4 +153,4 @@ const setBest = (board, currMin, currSec, bestMin, bestSec) => {
     };
 };
 
-export default checkWin;
+export default checkWin4x4;
