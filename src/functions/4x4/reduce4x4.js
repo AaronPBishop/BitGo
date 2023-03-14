@@ -64,7 +64,7 @@ const reduce4x4 = (currentGrid) => {
         };
     };
 
-    if (!checkObj(rows, cols)) return reduce4x4();
+    if (!checkObj(rows, cols)) return reduce4x4(currentGrid);
 
     return grid;
 };

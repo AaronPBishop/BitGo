@@ -5,7 +5,9 @@ import reduce4x4 from '../functions/4x4/reduce4x4.js';
 const initialState = {
     board: [],
     presetCoords: [],
-    difficulty: ''
+    difficulty: '',
+    hasWon: false,
+    completionMsg: ''
 };
 
 
@@ -25,6 +27,17 @@ export const setTileVal = (row, col) => {
         type: 'SET_TILE_VAL',
         payload1: row,
         payload2: col
+    };
+};
+
+export const setHasWon = () => {
+    return { type: 'SET_HAS_WON' };
+};
+
+export const setCompletionMsg = (msg) => {
+    return {
+        type: 'SET_COMPLETION_MSG',
+        payload: msg
     };
 };
 
@@ -78,10 +91,25 @@ const gameReducer = (state = initialState, action) => {
             return currentState;
         };
 
+        case 'SET_HAS_WON': {
+            currentState.hasWon = true;
+            currentState.completionMsg = '';
+
+            return currentState;
+        };
+
+        case 'SET_COMPLETION_MSG': {
+            currentState.completionMsg = action.payload;
+
+            return currentState;
+        };
+
         case 'RESET_BOARD': {
             currentState.board = [];  
             currentState.presetCoords = [];  
             currentState.difficulty = '';
+            currentState.hasWon = false;
+            currentState.completionMsg = '';
         };
         
         default: return currentState;

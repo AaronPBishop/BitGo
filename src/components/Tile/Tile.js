@@ -3,7 +3,9 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { Lock } from '@styled-icons/fa-solid/Lock';
 
-import { setTileVal } from '../../store/game.js';
+import { setTileVal, setHasWon, setCompletionMsg } from '../../store/game.js';
+
+import checkWin from '../../functions/4x4/checkSolved4x4.js';
 
 import './styles.css';
 
@@ -19,6 +21,8 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
         <div
         key={currValue}
         onClick={() => {
+            if (gameSchema.hasWon === true) return;
+
             if (clickedPreset === true) {
                 setClickedPreset(false);
                 return;
@@ -33,6 +37,11 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
             };
 
             dispatch(setTileVal(rowCoord, colCoord));
+
+            const winStatus = checkWin(gameSchema.board);
+            
+            if (winStatus.solved) dispatch(setHasWon());
+            if (!winStatus.solved) dispatch(setCompletionMsg(winStatus.msg));
         }}
         className='tiles'
         id={currValue === null ? 'null-tile' : currValue === 0 ? 'red-tile' : currValue === 1 && 'blue-tile'}
@@ -43,7 +52,8 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
             width: '8vw',
             height: '16vh',
             borderBottom: currValue === 0 ? '0.8vh solid rgb(190, 0, 0)' : currValue === 1 ? '0.8vh solid rgb(0, 0, 170)' : '0.8vh solid rgb(30, 30, 30)',
-            boxShadow: isHovering && currValue === null || isHovering && currValue === 0 ? '0px 0px 10px 2px red' : isHovering && currValue === 1 && '0px 0px 10px 2px blue'
+            boxShadow: isHovering && currValue === null || isHovering && currValue === 0 ? '0px 0px 10px 2px red' : isHovering && currValue === 1 && '0px 0px 10px 2px blue',
+            opacity: gameSchema.hasWon === true ? '0.6' : '1'
         }}>
             <Lock
             className='preset-lock'
