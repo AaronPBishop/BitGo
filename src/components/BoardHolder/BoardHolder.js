@@ -1,8 +1,12 @@
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+
+import { resetBoard } from '../../store/game.js';
 
 import Board from '../Board/Board.js';
 
 const BoardHolder = () => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     return (
@@ -14,7 +18,10 @@ const BoardHolder = () => {
             flexWrap: 'wrap'
         }}>
             <div
-            onClick={() => navigate('/')}
+            onClick={() => {
+                navigate('/');
+                dispatch(resetBoard());
+            }}
             style={{
                 textAlign: 'center',
                 color: 'white',

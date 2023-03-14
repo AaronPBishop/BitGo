@@ -2,11 +2,14 @@ import Tile from "../Tile/Tile.js";
 
 const Row = ({ tiles, rowCoord }) => {
     return (
-        <div style={{display: 'flex'}}>
+        <div style={{
+            marginTop: rowCoord === 0 && '5vh',
+            display: 'flex', 
+            justifyContent: 'center',
+            height: '18vh'
+        }}>
             {
-                tiles.map((tile, i) => {
-                    return <Tile currValue={tile} rowCoord={rowCoord} colCoord={i} />
-                })
+                tiles.map((tile, i) => <Tile currValue={tile} rowCoord={rowCoord} colCoord={i} />)
             }
         </div>
     );

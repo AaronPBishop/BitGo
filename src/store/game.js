@@ -1,9 +1,13 @@
-import buildValid4x4, { checkColumnsUnique } from '../functions/buildValid4x4.js';
+import buildValid4x4 from '../functions/4x4/buildValid4x4.js';
+import reduce4x4 from '../functions/4x4/reduce4x4.js';
+
 
 const initialState = {
     board: [],
+    presetCoords: [],
     difficulty: ''
 };
+
 
 export const setDifficulty = (difficulty) => {
     return {
@@ -15,6 +19,21 @@ export const setDifficulty = (difficulty) => {
 export const buildValidBoard = () => {
     return { type: 'BUILD_VALID_BOARD' };
 };
+
+export const setTileVal = (row, col) => {
+    return {
+        type: 'SET_TILE_VAL',
+        payload1: row,
+        payload2: col
+    };
+};
+
+export const resetBoard = () => {
+    return {
+        type: 'RESET_BOARD'
+    };
+};
+
 
 // MAIN REDUCER
 const gameReducer = (state = initialState, action) => {
@@ -29,11 +48,40 @@ const gameReducer = (state = initialState, action) => {
 
         case 'BUILD_VALID_BOARD': {
             if (currentState.difficulty === '4x4') {
-                const validBoard = checkColumnsUnique();
-                currentState.board = buildValid4x4(validBoard);
+                const validBoard = buildValid4x4();
+                const reducedBoard = reduce4x4(validBoard);
+
+                currentState.board = reducedBoard;
+
+                for (let i = 0; i < reducedBoard.length; i++) {
+                    for (let j = 0; j < reducedBoard[i].length; j++) {
+                        if (reducedBoard[i][j] !== null) currentState.presetCoords.push([i, j])
+                    };
+                };
+
+
+                return currentState;
             };
 
             return currentState;
+        };
+
+        case 'SET_TILE_VAL': {
+            const valMap = {
+                null: 0,
+                0: 1,
+                1: null
+            };
+
+            currentState.board[action.payload1][action.payload2] = valMap[currentState.board[action.payload1][action.payload2]];
+
+            return currentState;
+        };
+
+        case 'RESET_BOARD': {
+            currentState.board = [];  
+            currentState.presetCoords = [];  
+            currentState.difficulty = '';
         };
         
         default: return currentState;
