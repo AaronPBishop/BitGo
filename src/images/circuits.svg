@@ -1,0 +1,33 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect x="0" y="0" width="500" height="500" fill="#000" />
+  <circle cx="250" cy="250" r="10" fill="#fff">
+    <animate attributeName="r" values="10; 50; 10" dur="3s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="250" cy="250" r="50" fill="none" stroke="rgb(20, 0, 140)">
+    <animate attributeName="r" values="50; 100; 50" dur="4s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="250" cy="250" r="100" fill="none" stroke="rgb(120, 0, 140)">
+    <animate attributeName="r" values="100; 150; 100" dur="5s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="250" cy="250" r="150" fill="none" stroke="rgb(220, 0, 40)">
+    <animate attributeName="r" values="150; 200; 150" dur="6s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="250" cy="250" r="200" fill="none" stroke="rgb(255, 0, 0)">
+    <animate attributeName="r" values="200; 250; 200" dur="7s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="250" cy="250" r="250" fill="none" stroke="rgb(0, 255, 0)">
+    <animate attributeName="r" values="250; 200; 250" dur="8s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="250" cy="250" r="200" fill="none" stroke="rgb(255, 255, 0)">
+    <animate attributeName="r" values="200; 150; 200" dur="9s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="250" cy="250" r="150" fill="none" stroke="rgb(20, 30, 140)">
+    <animate attributeName="r" values="150; 100; 150" dur="10s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="250" cy="250" r="100" fill="black" stroke="rgb(20, 30, 140)">
+    <animate attributeName="r" values="100; 50; 100" dur="11s" repeatCount="indefinite" />
+  </circle>
+  <circle cx="250" cy="250" r="50" fill="black" stroke="rgb(20, 30, 140)">
+    <animate attributeName="r" values="50; 10; 50" dur="12s" repeatCount="indefinite" />
+  </circle>
+</svg>
