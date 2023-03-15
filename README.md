@@ -10,6 +10,10 @@ Preset tiles may not be changed. Gray tiles may be clicked once to change their 
 
 > To play, simply launch the file in localhost and navigate to the designated port in your browser!
 
+**_Note: This is an updated, React-ified version of the original BitGo. The original repository can be found here: https://github.com/AaronPBishop/BitGo-Original_**
+
+## Live link: https://bitgo.onrender.com
+
 **_Abstract_**
 
 While BitGo appears relatively straightforward on the surface, it was quite a challenge to build. The challenge lies in randomly generating a preset, *solvable* board for players to decipher. Initially, it seemed the only hurdle to overcome was generating a set of 4-5 randomly colored tiles to place on the starting 4x4 board, while keeping track of the underlying grid after each placement, thus ensuring that no more than two tiles are assigned to any row or column. Unfortunately, once this had been accomplished, it appeared evident that I had merely opened Pandora's box. 
