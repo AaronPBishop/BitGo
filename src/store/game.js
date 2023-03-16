@@ -2,7 +2,8 @@ import buildValid4x4 from '../functions/4x4/buildValid4x4.js';
 import reduce4x4 from '../functions/4x4/reduce4x4.js';
 import buildValid6x6 from '../functions/6x6/buildValid6x6.js';
 import reduce6x6 from '../functions/6x6/reduce6x6.js';
-
+import makeBoard from '../functions/makeBoard.js';
+import reduce8x8 from '../functions/8x8/reduce8x8.js';
 
 const initialState = {
     board: [],
@@ -11,7 +12,6 @@ const initialState = {
     hasWon: false,
     completionMsg: ''
 };
-
 
 export const setDifficulty = (difficulty) => {
     return {
@@ -62,34 +62,32 @@ const gameReducer = (state = initialState, action) => {
         };
 
         case 'BUILD_VALID_BOARD': {
-            if (currentState.difficulty === '4x4') {
-                const reducedBoard = reduce4x4(buildValid4x4());
+            let reducedBoard;
 
-                currentState.board = reducedBoard;
-
-                for (let i = 0; i < reducedBoard.length; i++) {
-                    for (let j = 0; j < reducedBoard[i].length; j++) {
-                        if (reducedBoard[i][j] !== null) currentState.presetCoords.push([i, j])
-                    };
+            switch (currentState.difficulty) {
+                case '4x4': {
+                    reducedBoard = reduce4x4(buildValid4x4());
+                    currentState.board = reducedBoard;
+                    break;
                 };
 
+                case '6x6': {
+                    reducedBoard = reduce6x6(buildValid6x6());
+                    currentState.board = reducedBoard;
+                    break;
+                };
 
-                return currentState;
+                case '8x8': {
+                    reducedBoard = reduce8x8(makeBoard(8));
+                    currentState.board = reducedBoard;
+                    break;
+                };
             };
 
-            if (currentState.difficulty === '6x6') {
-                const reducedBoard = reduce6x6(buildValid6x6());
-
-                currentState.board = reducedBoard;
-
-                for (let i = 0; i < reducedBoard.length; i++) {
-                    for (let j = 0; j < reducedBoard[i].length; j++) {
-                        if (reducedBoard[i][j] !== null) currentState.presetCoords.push([i, j])
-                    };
+            for (let i = 0; i < reducedBoard.length; i++) {
+                for (let j = 0; j < reducedBoard[i].length; j++) {
+                    if (reducedBoard[i][j] !== null) currentState.presetCoords.push([i, j])
                 };
-
-
-                return currentState;
             };
 
             return currentState;

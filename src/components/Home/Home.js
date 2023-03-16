@@ -48,9 +48,10 @@ const Home = () => {
                     marginTop: '10vh'
                 }}>
                     <div
-                    onClick={() => {
+                    onClick={async () => {
                         navigate('/game');
-                        dispatch(setDifficulty('8x8'));
+                        await dispatch(setDifficulty('8x8'));
+                        await dispatch(buildValidBoard());
                     }}
                     className='board-selections'
                     style={{backgroundColor: 'red', marginRight: '2vw'}}>
