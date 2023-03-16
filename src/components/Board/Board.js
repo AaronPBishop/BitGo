@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { resetBoard, setDifficulty, buildValidBoard } from '../../store/game.js';
 
 import Row from '../Row/Row.js';
+import CurrentTime from '../Timer/CurrentTime.js';
 
 import './styles.css';
 
@@ -21,7 +22,15 @@ const Board = () => {
                 gameSchema.board.map((tiles, i) => <Row tiles={tiles} rowCoord={i} />)
             }
 
-            <div style={{color: 'white', textAlign: 'center', marginTop: '6vh', marginBottom: '2vh'}}>
+            <CurrentTime />
+
+            <div style={{
+                display: gameSchema.completionMsg.length? 'block' : 'none', 
+                color: 'white', 
+                textAlign: 'center', 
+                marginTop: '2vh', 
+                marginBottom: '2vh'
+            }}>
                 { gameSchema.completionMsg }
             </div>
 
