@@ -59,9 +59,10 @@ const Home = () => {
                     </div>
 
                     <div
-                    onClick={() => {
+                    onClick={async () => {
                         navigate('/game');
-                        dispatch(setDifficulty('10x10'));
+                        await dispatch(setDifficulty('10x10'));
+                        await dispatch(buildValidBoard());
                     }}
                     className='board-selections'
                     style={{backgroundColor: 'blue', marginLeft: '2vw'}}>

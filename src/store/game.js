@@ -4,6 +4,7 @@ import buildValid6x6 from '../functions/6x6/buildValid6x6.js';
 import reduce6x6 from '../functions/6x6/reduce6x6.js';
 import makeBoard from '../functions/makeBoard.js';
 import reduce8x8 from '../functions/8x8/reduce8x8.js';
+import reduce10x10 from '../functions/10x10/reduce10x10.js';
 
 const initialState = {
     board: [],
@@ -79,6 +80,12 @@ const gameReducer = (state = initialState, action) => {
 
                 case '8x8': {
                     reducedBoard = reduce8x8(makeBoard(8));
+                    currentState.board = reducedBoard;
+                    break;
+                };
+
+                case '10x10': {
+                    reducedBoard = reduce10x10(makeBoard(10));
                     currentState.board = reducedBoard;
                     break;
                 };

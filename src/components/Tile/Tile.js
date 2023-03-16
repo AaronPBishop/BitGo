@@ -8,6 +8,7 @@ import { setTileVal, setHasWon, setCompletionMsg } from '../../store/game.js';
 import checkWin4x4 from '../../functions/4x4/checkSolved4x4.js';
 import checkWin6x6 from '../../functions/6x6/checkSolved6x6.js';
 import checkWin8x8 from '../../functions/8x8/checkSolved8x8.js';
+import checkWin10x10 from '../../functions/10x10/checkSolved10x10.js';
 
 import './styles.css';
 
@@ -32,13 +33,18 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
         '8x8': {
             width: '4vw',
             height: '8vh'
+        },
+        '10x10': {
+            width: '3.2vw',
+            height: '6vh'
         }
     };
 
     const checkWinMap = {
         '4x4': checkWin4x4,
         '6x6': checkWin6x6,
-        '8x8': checkWin8x8
+        '8x8': checkWin8x8,
+        '10x10': checkWin10x10
     };
 
     useEffect(() => {
