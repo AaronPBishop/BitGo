@@ -40,6 +40,13 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
         }
     };
 
+    const iconSizeMap = {
+        '4x4': '3vw',
+        '6x6': '2vw',
+        '8x8': '1.5vw',
+        '10x10': '1vw'
+    };
+
     const checkWinMap = {
         '4x4': checkWin4x4,
         '6x6': checkWin6x6,
@@ -93,7 +100,7 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
             style={{
                 display: clickedPreset ? 'block' : 'none',
                 color: 'rgb(10, 10, 10)',
-                width: '3vw'
+                width: iconSizeMap[gameSchema.difficulty]
             }}>
             </Lock>
         </div>
