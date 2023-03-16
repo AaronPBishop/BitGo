@@ -162,49 +162,13 @@ const checkWin10x10 = (board) => {
                     return { solved: false, msg: 'Each row must be unique' };
                 };
             } else {
-                return { solved: false, msg: 'More than two same-color consecutive tiles in a column are not allowed' };
+                return { solved: false, msg: 'More than two matching  tiles in a column are not allowed' };
             };
         } else {
-            return { solved: false, msg: 'More than two same-color consecutive tiles in a row are not allowed' };
+            return { solved: false, msg: 'More than two matching  tiles in a row are not allowed' };
         };
     } else {
         return { solved: false, msg: '' };
-    };
-};
-
-const setWin = (board) => {
-    let wins = 0;
-    if (sessionStorage.getItem('hasWon-10x10')) wins = sessionStorage.getItem('hasWon-10x10');
-
-    if (checkWin10x10(board)) {
-        wins++;
-        sessionStorage.setItem('hasWon-10x10', wins);
-
-        document.getElementById('timer-current').style.opacity = '0%';
-        document.getElementById('timer-best').style.opacity = '0%';
-
-        const buttons = document.querySelectorAll('.buttons');
-        buttons.forEach(button => {
-            button.style.opacity = '0.8';
-            button.style.bottom = '110px';
-            button.style.borderBottom = 'none'
-            button.disabled = true;
-        });
-        
-        const gameWin = document.getElementById('game-win');
-        gameWin.style.display = 'block';
-    };
-};
-
-const setBest = (board, currMin, currSec, bestMin, bestSec) => {
-    if (checkWin10x10(board)) {
-        if (sessionStorage.getItem('hasWon-10x10') > 1) {
-            if (Number(currMin.innerText) >= Number(bestMin.innerText) && Number(currSec.innerText) >= Number(bestSec.innerText)) return;
-            if (Number(currMin.innerText) > Number(bestMin.innerText) && Number(currSec.innerText) <= Number(bestSec.innerText)) return;
-        };
-
-        sessionStorage.setItem('bestMinute-10x10', currMin.innerText);
-        sessionStorage.setItem('bestSecond-10x10', currSec.innerText);
     };
 };
 

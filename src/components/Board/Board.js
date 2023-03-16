@@ -4,6 +4,7 @@ import { resetBoard, setDifficulty, buildValidBoard } from '../../store/game.js'
 
 import Row from '../Row/Row.js';
 import CurrentTime from '../Timer/CurrentTime.js';
+import BestTime from '../Timer/BestTime.js';
 
 import './styles.css';
 
@@ -13,11 +14,9 @@ const Board = () => {
     const gameSchema = useSelector(state => state.game);
 
     if (gameSchema.board.length) return (
-        <div 
-        id="game-box"
-        style={{
-            marginTop: gameSchema.difficulty !== '4x4' && '-0.5vh'
-        }}>
+        <div id="game-box" style={{marginTop: gameSchema.difficulty !== '4x4' && '-0.5vh'}}>
+            <BestTime />
+            
             {
                 gameSchema.board.map((tiles, i) => <Row tiles={tiles} rowCoord={i} />)
             }
@@ -28,8 +27,8 @@ const Board = () => {
                 display: gameSchema.completionMsg.length? 'block' : 'none', 
                 color: 'white', 
                 textAlign: 'center', 
-                marginTop: '2vh', 
-                marginBottom: '2vh'
+                marginTop: '-1vh',
+                marginBottom: '1.2vh'
             }}>
                 { gameSchema.completionMsg }
             </div>
@@ -44,7 +43,8 @@ const Board = () => {
                     await dispatch(buildValidBoard());
                 }}
                 style={{
-                    marginBottom: '2vh',
+                    marginTop: '3vh',
+                    marginBottom: '3vh',
                     color: 'white', 
                     textAlign: 'center', 
                     lineHeight: '5vh',

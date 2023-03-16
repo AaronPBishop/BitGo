@@ -117,40 +117,4 @@ const checkWin4x4 = (board) => {
     };
 };
 
-const setWin = (board) => {
-    let wins = 0;
-    if (localStorage.getItem('hasWon')) wins = localStorage.getItem('hasWon');
-
-    if (checkWin4x4(board)) {
-        wins++;
-        localStorage.setItem('hasWon', wins);
-
-        document.getElementById('timer-current').style.opacity = '0%';
-        document.getElementById('timer-best').style.opacity = '0%';
-
-        const buttons = document.querySelectorAll('.buttons');
-        buttons.forEach(button => {
-            button.style.opacity = '0.8';
-            button.style.bottom = '90px';
-            button.style.borderBottom = 'none'
-            button.disabled = true;
-        });
-        
-        const gameWin = document.getElementById('game-win');
-        gameWin.style.display = 'block';
-    };
-};
-
-const setBest = (board, currMin, currSec, bestMin, bestSec) => {
-    if (checkWin4x4(board)) {
-        if (localStorage.getItem('hasWon') > 1) {
-            if (Number(currMin.innerText) >= Number(bestMin.innerText) && Number(currSec.innerText) >= Number(bestSec.innerText)) return;
-            if (Number(currMin.innerText) > Number(bestMin.innerText) && Number(currSec.innerText) <= Number(bestSec.innerText)) return;
-        };
-
-        localStorage.setItem('bestMinute', currMin.innerText);
-        localStorage.setItem('bestSecond', currSec.innerText);
-    };
-};
-
 export default checkWin4x4;

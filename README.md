@@ -8,7 +8,7 @@ Preset tiles may not be changed. Gray tiles may be clicked once to change their 
 
 * More than two of the same colored tiles placed consecutively in a row or column are not allowed
 
-> To play, simply launch the file in localhost and navigate to the designated port in your browser!
+> To play, run 'npm install' from the base directory, follwed by 'npm start'. Have fun!
 
 **_Note: This is an updated, React-ified version of the original BitGo. The original repository can be found here: https://github.com/AaronPBishop/BitGo-Original_**
 
