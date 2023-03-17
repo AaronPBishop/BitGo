@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setClickedPlay, setClickedInstructions, setClickedBestTimes, resetMenuSelections } from '../../store/menu.js';
 
 import Difficulties from './Difficulties.js';
+import Instructions from './Instructions.js';
 
 import './styles.css';
 
@@ -57,6 +58,7 @@ const Home = () => {
                 </div>
 
                 <Difficulties />
+                <Instructions />
             </div>
         </div>
     );

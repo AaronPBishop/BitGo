@@ -11,7 +11,7 @@ const Difficulties = () => {
     const dispatch = useDispatch();
 
     return (
-        <div style={{display: clickedPlay? 'block' : 'none'}}>
+        <div style={{display: clickedPlay ? 'block' : 'none'}}>
             <div
             style={{display: 'flex', justifyContent: 'center'}}>
                 <div
