@@ -5,6 +5,7 @@ import { setClickedPlay, setClickedInstructions, setClickedBestTimes, resetMenuS
 
 import Difficulties from './Difficulties.js';
 import Instructions from './Instructions.js';
+import BestTimes from './BestTimes.js';
 
 import './styles.css';
 
@@ -38,7 +39,7 @@ const Home = () => {
 
                 <div 
                 onClick={() => dispatch(setClickedPlay())}
-                style={{display: clickedMenuButton && 'none'}}
+                style={{display: clickedMenuButton && 'none', marginTop: '12.5vh'}}
                 className='menu-buttons'>
                     Play
                 </div>
@@ -52,13 +53,14 @@ const Home = () => {
 
                 <div 
                 onClick={() => dispatch(setClickedBestTimes())}
-                style={{display: clickedMenuButton && 'none'}}
+                style={{display: clickedMenuButton && 'none', marginBottom: '20vh'}}
                 className='menu-buttons'>
                     Best Times
                 </div>
 
                 <Difficulties />
                 <Instructions />
+                <BestTimes />
             </div>
         </div>
     );
