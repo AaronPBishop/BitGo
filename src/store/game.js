@@ -9,6 +9,7 @@ import reduce10x10 from '../functions/10x10/reduce10x10.js';
 const initialState = {
     board: [],
     presetCoords: [],
+    selectionQueue: [],
     difficulty: '',
     hasWon: false,
     completionMsg: '',
@@ -33,6 +34,10 @@ export const setTileVal = (row, col) => {
         payload1: row,
         payload2: col
     };
+};
+
+export const undoMove = () => {
+    return { type: 'UNDO_MOVE' };
 };
 
 export const setHasWon = () => {
@@ -110,13 +115,30 @@ const gameReducer = (state = initialState, action) => {
         };
 
         case 'SET_TILE_VAL': {
-            const valMap = {
-                null: 0,
-                0: 1,
-                1: null
+            const valMap = { null: 0, 0: 1, 1: null };
+
+            const newVal = valMap[currentState.board[action.payload1][action.payload2]];
+
+            currentState.board[action.payload1][action.payload2] = newVal;
+
+            if (newVal === 0) currentState.selectionQueue.push([action.payload1, action.payload2]);
+            if (newVal === null) {
+                for (let i = 0; i < currentState.selectionQueue.length; i++) {
+                    const [row, col] = currentState.selectionQueue[i];
+
+                    if (action.payload1 === row && action.payload2 === col) currentState.selectionQueue.splice(i, 1);
+                };
             };
 
-            currentState.board[action.payload1][action.payload2] = valMap[currentState.board[action.payload1][action.payload2]];
+            return currentState;
+        };
+
+        case 'UNDO_MOVE': {
+            if (!currentState.selectionQueue.length) return currentState;
+            if (currentState.completionMsg.length) currentState.completionMsg = '';
+            
+            const poppedTile = currentState.selectionQueue.pop();
+            currentState.board[poppedTile[0]][poppedTile[1]] = null;
 
             return currentState;
         };
@@ -140,13 +162,16 @@ const gameReducer = (state = initialState, action) => {
             return currentState;
         };
 
-        case 'RESET_BOARD': {
+        case 'RESET_BOARD': { 
             currentState.board = [];  
             currentState.presetCoords = [];  
+            currentState.selectionQueue = [];
             currentState.difficulty = '';
             currentState.hasWon = false;
             currentState.completionMsg = '';
             currentState.beatRecord = false;
+
+            return currentState;
         };
         
         default: return currentState;
