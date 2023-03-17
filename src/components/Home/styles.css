@@ -1,4 +1,9 @@
 #content {
+    display: flex;
+    justify-content: center;
+
+    flex-wrap: wrap;
+
     position: relative;
     top: 10vh;
   
@@ -13,6 +18,44 @@
   
     border: 3px solid rgb(130, 138, 255);
     box-shadow: 0px 0px 12px 4px red;
+}
+
+.menu-buttons {
+    color: white; 
+    text-align: center; 
+    line-height: 7vh;
+
+    width: 14vw;
+    height: 7vh;
+
+    background-color: rgb(41, 41, 160);
+
+    border: none;
+    border-bottom: 5px solid rgb(21, 21, 100);
+    border-radius: 8px;
+
+    margin-top: 8vh;
+    margin-left: 5vw;
+    margin-right: 5vw;
+
+    box-shadow: 0px 0px 8px 2px rgb(130, 138, 255);
+    
+    cursor: pointer;
+}
+
+#back-button {
+    text-align: center; 
+    color: white; 
+
+    height: 0vh;
+    width: 10vw;
+
+    margin-top: 4vh;
+    margin-bottom: -8vh;
+    margin-left: 20vw;
+    margin-right: 20vw;
+
+    cursor: pointer;
 }
 
 .board-selections {
@@ -30,4 +73,8 @@
     border: none;
 
     cursor: pointer;
+}
+
+#back-button:hover {
+    color: yellow;
 }

@@ -1,74 +1,62 @@
-import { useNavigate } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
-import { setDifficulty, buildValidBoard } from '../../store/game.js';
+import { setClickedPlay, setClickedInstructions, setClickedBestTimes, resetMenuSelections } from '../../store/menu.js';
+
+import Difficulties from './Difficulties.js';
 
 import './styles.css';
 
 const Home = () => {
-    const navigate = useNavigate();
     const dispatch = useDispatch();
+
+    const menu = useSelector(state => state.menu);
+
+    const [clickedMenuButton, setClickedMenuButton] = useState(false);
+
+    useEffect(() => {
+        for (let key in menu) {
+            if (menu[key] === true) {
+                setClickedMenuButton(true);
+                return;
+            };
+        };
+
+        setClickedMenuButton(false);
+    }, [menu]);
 
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
             <div id="content">
                 <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    marginTop: '14vh'
-                }}>
-                    <div
-                    onClick={async () => {
-                        navigate('/game');
-                        await dispatch(setDifficulty('4x4'));
-                        await dispatch(buildValidBoard());
-                    }}
-                    className='board-selections'
-                    style={{backgroundColor: 'blue', borderBottom: '0.6vh solid rgb(0, 0, 170)', marginRight: '2vw'}}>
-                        4x4
-                    </div>
-
-                    <div
-                    onClick={async () => {
-                        navigate('/game');
-                        await dispatch(setDifficulty('6x6'));
-                        await dispatch(buildValidBoard());
-                    }}
-                    className='board-selections'
-                    style={{backgroundColor: 'red', borderBottom: '0.6vh solid rgb(190, 0, 0)', marginLeft: '2vw'}}>
-                        6x6
-                    </div>
+                onClick={() => dispatch(resetMenuSelections())}
+                style={{display: clickedMenuButton ? 'block' : 'none'}}
+                id='back-button'>
+                    Back
                 </div>
 
-                <div
-                style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    marginTop: '10vh'
-                }}>
-                    <div
-                    onClick={async () => {
-                        navigate('/game');
-                        await dispatch(setDifficulty('8x8'));
-                        await dispatch(buildValidBoard());
-                    }}
-                    className='board-selections'
-                    style={{backgroundColor: 'red', borderBottom: '0.6vh solid rgb(190, 0, 0)', marginRight: '2vw'}}>
-                        8x8
-                    </div>
-
-                    <div
-                    onClick={async () => {
-                        navigate('/game');
-                        await dispatch(setDifficulty('10x10'));
-                        await dispatch(buildValidBoard());
-                    }}
-                    className='board-selections'
-                    style={{backgroundColor: 'blue', borderBottom: '0.6vh solid rgb(0, 0, 170)', marginLeft: '2vw'}}>
-                        10x10
-                    </div>
+                <div 
+                onClick={() => dispatch(setClickedPlay())}
+                style={{display: clickedMenuButton && 'none'}}
+                className='menu-buttons'>
+                    Play
                 </div>
+
+                <div 
+                onClick={() => dispatch(setClickedInstructions())}
+                style={{display: clickedMenuButton && 'none'}}
+                className='menu-buttons'>
+                    Instructions
+                </div>
+
+                <div 
+                onClick={() => dispatch(setClickedBestTimes())}
+                style={{display: clickedMenuButton && 'none'}}
+                className='menu-buttons'>
+                    Best Times
+                </div>
+
+                <Difficulties />
             </div>
         </div>
     );

@@ -1,9 +1,11 @@
 import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 
 import gameReducer from './game.js';
+import menuReducer from './menu.js';
 
 const rootReducer = combineReducers({
-    game: gameReducer
+    game: gameReducer,
+    menu: menuReducer
 });
 
 let enhancer;
