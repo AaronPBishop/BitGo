@@ -1,11 +1,16 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+
+import { setBeatRecord } from '../../store/game.js';
 
 import setBest from '../../functions/setBest.js';
 
 const CurrentTime = () => {
+    const dispatch = useDispatch();
+
     const hasWon = useSelector(state => state.game.hasWon);
     const difficulty = useSelector(state => state.game.difficulty);
+    const beatRecord = useSelector(state => state.game.beatRecord);
 
     const timer = val => val > 9 ? val : "0" + val;
 
@@ -29,18 +34,26 @@ const CurrentTime = () => {
     }, [switched]);
 
     useEffect(() => {
-        if (hasWon === true) setBest(currSec, currMin, difficulty);
+        if (hasWon === true) {
+            const bestStatus = setBest(currSec, currMin, difficulty);
+
+            dispatch(setBeatRecord(bestStatus.beatRecord));
+        };
     }, [hasWon]);
 
     return (
         <div style={{
-            display: hasWon === true ? 'none' : 'block',
-            marginTop: '2vh',
-            marginBottom: '2vh',
-            color: 'white',
+            position: hasWon && 'relative',
+            bottom: hasWon && '36vh',
+            fontSize: hasWon && '2.5em',
+            marginTop: !hasWon && '2vh',
+            marginBottom: !hasWon ? '2vh' : '-6vh',
+            color: !hasWon ? 'white' : hasWon && beatRecord ? 'rgb(0, 255, 80)' : hasWon && !beatRecord && 'rgb(200, 0, 0)',
             textAlign: 'center'
         }}>
-            { currMin } : { currSec }
+            {
+                !hasWon ? `${ currMin } : ${currSec}` : `${ currMin } : ${currSec - 1}`
+            }
         </div>
     );
 };

@@ -10,6 +10,7 @@ import checkWin6x6 from '../../functions/6x6/checkSolved6x6.js';
 import checkWin8x8 from '../../functions/8x8/checkSolved8x8.js';
 import checkWin10x10 from '../../functions/10x10/checkSolved10x10.js';
 
+import { tileSizeMap, iconSizeMap } from './styleMaps.js';
 import './styles.css';
 
 const Tile = ({ currValue, rowCoord, colCoord }) => {
@@ -20,32 +21,6 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
     const [clicked, setClicked] = useState(false);
     const [clickedPreset, setClickedPreset] = useState(false);
     const [isHovering, setIsHovering] = useState(false);
-
-    const tileSizeMap = {
-        '4x4': {
-            width: '8vw',
-            height: '16vh'
-        },
-        '6x6': {
-            width: '5.5vw',
-            height: '11vh'
-        },
-        '8x8': {
-            width: '4vw',
-            height: '8vh'
-        },
-        '10x10': {
-            width: '3.2vw',
-            height: '6vh'
-        }
-    };
-
-    const iconSizeMap = {
-        '4x4': '3vw',
-        '6x6': '2vw',
-        '8x8': '1.5vw',
-        '10x10': '1vw'
-    };
 
     const checkWinMap = {
         '4x4': checkWin4x4,
@@ -83,17 +58,26 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
             setClicked(clicked => !clicked);
             dispatch(setTileVal(rowCoord, colCoord));
         }}
-        className='tiles'
-        id={currValue === null ? 'null-tile' : currValue === 0 ? 'red-tile' : currValue === 1 && 'blue-tile'}
+        className={!gameSchema.hasWon ? 'tiles' : gameSchema.hasWon && 'cleared-tiles'}
+        id={
+        (!gameSchema.hasWon && currValue === null) ? 'null-tile' 
+        : (!gameSchema.hasWon && currValue === 0) ? 'red-tile' 
+        : (!gameSchema.hasWon && currValue === 1) ? 'blue-tile' 
+        : gameSchema.hasWon && null
+        }
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
         style={{
-            backgroundColor: currValue === 0 ? 'red' : currValue === 1 ? 'blue' : 'rgb(40, 40, 40)',
+            backgroundColor: (!gameSchema.hasWon && currValue === null) ? 'rgb(40, 40, 40)' 
+            : (!gameSchema.hasWon && currValue === 0) ? 'red' 
+            : (!gameSchema.hasWon && currValue === 1) && 'blue',
             width: tileSizeMap[gameSchema.difficulty].width,
             height: tileSizeMap[gameSchema.difficulty].height,
-            borderBottom: currValue === 0 ? '0.8vh solid rgb(190, 0, 0)' : currValue === 1 ? '0.8vh solid rgb(0, 0, 170)' : '0.8vh solid rgb(30, 30, 30)',
-            boxShadow: isHovering && currValue === null || isHovering && currValue === 0 ? '0px 0px 10px 2px red' : isHovering && currValue === 1 && '0px 0px 10px 2px blue',
-            opacity: gameSchema.hasWon === true ? '0.6' : '1'
+            borderBottom: (!gameSchema.hasWon && currValue === 0) ? '0.8vh solid rgb(190, 0, 0)' 
+            : (!gameSchema.hasWon && currValue === 1) ? '0.8vh solid rgb(0, 0, 170)' 
+            : (!gameSchema.hasWon & currValue === null) && '0.8vh solid rgb(30, 30, 30)',
+            boxShadow: ((!gameSchema.hasWon && isHovering && currValue === null) || (!gameSchema.hasWon && isHovering && currValue === 0)) ? '0px 0px 10px 2px red' 
+            : (!gameSchema.hasWon && isHovering && currValue === 1) && '0px 0px 10px 2px blue'
         }}>
             <Lock
             className='preset-lock'
@@ -103,6 +87,16 @@ const Tile = ({ currValue, rowCoord, colCoord }) => {
                 width: iconSizeMap[gameSchema.difficulty]
             }}>
             </Lock>
+
+            <div 
+            className='clear-element'
+            style={{
+                display: gameSchema.hasWon ? 'block' : 'none',
+                backgroundColor: 'yellow',
+                width: 'inherit'
+            }}>
+                
+            </div>
         </div>
     );
 };

@@ -11,9 +11,11 @@ const initialState = {
     presetCoords: [],
     difficulty: '',
     hasWon: false,
-    completionMsg: ''
+    completionMsg: '',
+    beatRecord: false
 };
 
+// ACTION CREATORS
 export const setDifficulty = (difficulty) => {
     return {
         type: 'SET_DIFFICULTY',
@@ -47,6 +49,13 @@ export const setCompletionMsg = (msg) => {
 export const resetBoard = () => {
     return {
         type: 'RESET_BOARD'
+    };
+};
+
+export const setBeatRecord = (bool) => {
+    return {
+        type: 'SET_BEAT_RECORD',
+        payload: bool
     };
 };
 
@@ -125,12 +134,19 @@ const gameReducer = (state = initialState, action) => {
             return currentState;
         };
 
+        case 'SET_BEAT_RECORD': {
+            currentState.beatRecord = action.payload;
+
+            return currentState;
+        };
+
         case 'RESET_BOARD': {
             currentState.board = [];  
             currentState.presetCoords = [];  
             currentState.difficulty = '';
             currentState.hasWon = false;
             currentState.completionMsg = '';
+            currentState.beatRecord = false;
         };
         
         default: return currentState;

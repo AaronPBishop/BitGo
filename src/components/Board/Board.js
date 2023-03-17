@@ -42,19 +42,12 @@ const Board = () => {
                     await dispatch(setDifficulty(difficulty));
                     await dispatch(buildValidBoard());
                 }}
+                id='play-again'
                 style={{
-                    marginTop: '3vh',
-                    marginBottom: '3vh',
-                    color: 'white', 
-                    textAlign: 'center', 
-                    lineHeight: '5vh',
-                    width: '9vw',
-                    height: '5.5vh',
-                    backgroundColor: 'rgb(41, 41, 160)',
-                    border: 'none',
-                    borderRadius: '8px',
-                    boxShadow: '0px 0px 6px 2px rgb(130, 138, 255)',
-                    cursor: 'pointer'
+                    position: gameSchema.hasWon && 'relative',
+                    bottom: gameSchema.hasWon && '16vh',
+                    marginTop: !gameSchema.hasWon && '3vh',
+                    marginBottom: !gameSchema.hasWon && '3vh'
                 }}>
                     Play Again
                 </div>
