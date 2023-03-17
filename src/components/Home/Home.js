@@ -16,7 +16,7 @@ const Home = () => {
                 style={{
                     display: 'flex',
                     justifyContent: 'center',
-                    marginTop: '16vh'
+                    marginTop: '14vh'
                 }}>
                     <div
                     onClick={async () => {
@@ -25,7 +25,7 @@ const Home = () => {
                         await dispatch(buildValidBoard());
                     }}
                     className='board-selections'
-                    style={{backgroundColor: 'blue', marginRight: '2vw'}}>
+                    style={{backgroundColor: 'blue', borderBottom: '0.6vh solid rgb(0, 0, 170)', marginRight: '2vw'}}>
                         4x4
                     </div>
 
@@ -36,7 +36,7 @@ const Home = () => {
                         await dispatch(buildValidBoard());
                     }}
                     className='board-selections'
-                    style={{backgroundColor: 'red', marginLeft: '2vw'}}>
+                    style={{backgroundColor: 'red', borderBottom: '0.6vh solid rgb(190, 0, 0)', marginLeft: '2vw'}}>
                         6x6
                     </div>
                 </div>
@@ -54,7 +54,7 @@ const Home = () => {
                         await dispatch(buildValidBoard());
                     }}
                     className='board-selections'
-                    style={{backgroundColor: 'red', marginRight: '2vw'}}>
+                    style={{backgroundColor: 'red', borderBottom: '0.6vh solid rgb(190, 0, 0)', marginRight: '2vw'}}>
                         8x8
                     </div>
 
@@ -65,7 +65,7 @@ const Home = () => {
                         await dispatch(buildValidBoard());
                     }}
                     className='board-selections'
-                    style={{backgroundColor: 'blue', marginLeft: '2vw'}}>
+                    style={{backgroundColor: 'blue', borderBottom: '0.6vh solid rgb(0, 0, 170)', marginLeft: '2vw'}}>
                         10x10
                     </div>
                 </div>

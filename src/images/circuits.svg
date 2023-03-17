@@ -24,10 +24,10 @@
   <circle cx="250" cy="250" r="150" fill="none" stroke="rgb(20, 30, 140)">
     <animate attributeName="r" values="150; 100; 150" dur="10s" repeatCount="indefinite" />
   </circle>
-  <circle cx="250" cy="250" r="100" fill="black" stroke="rgb(20, 30, 140)">
+  <circle cx="250" cy="250" r="100" fill="black" stroke="rgb(20, 30, 160)">
     <animate attributeName="r" values="100; 50; 100" dur="11s" repeatCount="indefinite" />
   </circle>
-  <circle cx="250" cy="250" r="50" fill="black" stroke="rgb(20, 30, 140)">
+  <circle cx="250" cy="250" r="50" fill="black" stroke="rgb(220, 0, 40)">
     <animate attributeName="r" values="50; 10; 50" dur="12s" repeatCount="indefinite" />
   </circle>
 </svg>

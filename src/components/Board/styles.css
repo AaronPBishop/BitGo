@@ -43,3 +43,7 @@
     
     cursor: pointer;
 }
+
+#play-again:hover {
+    box-shadow: 0px 0px 18px 2px rgb(130, 138, 255);
+}
