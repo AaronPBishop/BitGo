@@ -5,6 +5,8 @@ import { resetBoard, setDifficulty, buildValidBoard } from '../../store/game.js'
 import Row from '../Row/Row.js';
 import CurrentTime from '../Timer/CurrentTime.js';
 import BestTime from '../Timer/BestTime.js';
+import UndoMove from './UndoMove.js';
+import RegenBoard from './RegenBoard.js';
 
 import './styles.css';
 
@@ -21,7 +23,11 @@ const Board = () => {
                 gameSchema.board.map((tiles, i) => <Row tiles={tiles} rowCoord={i} />)
             }
 
-            <CurrentTime />
+            <div style={{display: 'flex', justifyContent: 'space-evenly'}}>
+                <UndoMove />
+                <CurrentTime />
+                <RegenBoard />
+            </div>
 
             <div style={{
                 display: gameSchema.completionMsg.length? 'block' : 'none', 

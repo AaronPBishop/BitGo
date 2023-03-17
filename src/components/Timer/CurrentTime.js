@@ -15,6 +15,7 @@ const CurrentTime = () => {
     const timer = val => val > 9 ? val : "0" + val;
 
     const [switched, setSwitched] = useState(false);
+    const [trigger, setTrigger] = useState(false);
     const [seconds, setSeconds] = useState(1);
     const [currSec, setCurrSec] = useState(0);
     const [currMin, setCurrMin] = useState(0);
@@ -23,15 +24,22 @@ const CurrentTime = () => {
         if (hasWon === true) return;
 
         const interval = setInterval(() => {
-            setSeconds(seconds + 1);
-            setCurrSec(timer(seconds % 60));
-            setCurrMin(timer(parseInt(seconds / 60, 10)));
-
             setSwitched(switched => !switched);
+            setTrigger(true);
         }, 1000);
 
         return () => clearInterval(interval);
     }, [switched]);
+
+    useEffect(() => {
+        if (trigger === true && !hasWon) {
+            setSeconds(seconds + 1);
+            setCurrSec(timer(seconds % 60));
+            setCurrMin(timer(parseInt(seconds / 60, 10)));
+
+            setTrigger(false);
+        };
+    }, [trigger]);
 
     useEffect(() => {
         if (hasWon === true) {
@@ -46,14 +54,13 @@ const CurrentTime = () => {
             position: hasWon && 'relative',
             bottom: hasWon && '36vh',
             fontSize: hasWon && '2.5em',
+            minWidth: '10vw',
             marginTop: !hasWon && '2vh',
             marginBottom: !hasWon ? '2vh' : '-6vh',
             color: !hasWon ? 'white' : hasWon && beatRecord ? 'rgb(0, 255, 80)' : hasWon && !beatRecord && 'rgb(200, 0, 0)',
-            textAlign: 'center'
+            textAlign: 'center',
         }}>
-            {
-                !hasWon ? `${ currMin } : ${currSec}` : `${ currMin } : ${currSec - 1}`
-            }
+            { currMin } : {currSec}
         </div>
     );
 };
