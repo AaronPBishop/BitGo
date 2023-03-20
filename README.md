@@ -33,6 +33,6 @@ All that was left to do after perfecting the generator process was to refactor a
 
 ![image](https://user-images.githubusercontent.com/95946808/226447959-1de3e834-38d3-4ba9-8f3b-8f2ff1c613d6.png)
 
-### Nearly Solved 6x6 board_
+### _Nearly Solved 6x6 board_
 
 ![image](https://user-images.githubusercontent.com/95946808/226448528-e9542bbb-2b75-4742-9c0f-28d46b4588c2.png)
