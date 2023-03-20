@@ -31,8 +31,8 @@ All that was left to do after perfecting the generator process was to refactor a
 
 ### _Randomly generated 6x6 board_
 
-![image](https://user-images.githubusercontent.com/95946808/202943338-f6278e85-40a6-40eb-8423-9fc0413400bf.png)
+![image](https://user-images.githubusercontent.com/95946808/226447959-1de3e834-38d3-4ba9-8f3b-8f2ff1c613d6.png)
 
-### _Solved 6x6 board_
+### Nearly Solved 6x6 board_
 
-![image](https://user-images.githubusercontent.com/95946808/202943404-e4570f3f-03ce-4bdd-98c9-203bb56ce8b8.png)
+![image](https://user-images.githubusercontent.com/95946808/226448528-e9542bbb-2b75-4742-9c0f-28d46b4588c2.png)
