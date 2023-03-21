@@ -2,10 +2,12 @@ import { createStore, compose, applyMiddleware, combineReducers } from 'redux';
 
 import gameReducer from './game.js';
 import menuReducer from './menu.js';
+import bestTimesReducer from './bestTimes.js';
 
 const rootReducer = combineReducers({
     game: gameReducer,
-    menu: menuReducer
+    menu: menuReducer,
+    bestTimes: bestTimesReducer
 });
 
 let enhancer;
